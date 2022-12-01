@@ -18,10 +18,16 @@ ul{
     margin-bottom: 15px;
     
 }
+option {
+    border : "none";
+    outline: none;
+}
+
+
 .child{
     list-style: none;
     border-bottom: 1px solid #9FA6B2;
-    border-left: 1px solid #9FA6B2;
+    border-left: 1px solid #9fb2a9;
     border-bottom-left-radius: 5px;
     width: 500px;
     height: 150px;  

@@ -1,5 +1,5 @@
 import React, {  useState } from "react";
-import useLocalJson from "../Hooks/useLocalJson";
+import useLocalStorage from "./auth/Hooks/useLocalStorage";
 export default function Project({ props }) {
 
   const [closed, setClosed] = useState(true);
@@ -9,14 +9,25 @@ export default function Project({ props }) {
     setClosed(!closed);
   };
 
-
   const HandleSubmit = (e) => {
     e.preventDefault();
-    //update de la redondance
-    useLocalJson.updateJson(newItem, props.name);
-    setChilds(newItem)
-
-
+   console.log(e)
+    if(childs.filter(p => p.name === props.name).length > 0){
+      alert("A porject with same name already exist")
+       return 0;
+    }
+    let user = useLocalStorage.GetUser();
+    let project = JSON.parse(user.todo).projects.filter(p => p.name == props.name)[0]
+    project.childs.push({"desc" : newItem})
+    let otherProjects =  JSON.parse(user.todo).projects.filter(p => p.name != props.name)
+    otherProjects.push(project)
+   
+    user.todo = JSON.stringify({ "projects" : (Object.values(otherProjects)) })
+   
+   
+    console.log(user)
+    localStorage.setItem("user", JSON.stringify({user: user }))
+    setChilds(project.childs) 
   };
 
 
@@ -28,7 +39,7 @@ export default function Project({ props }) {
     >
       <li>
         <h5 onClick={(e) => ShowHide(e)}>
-          <span className="tag" style={{ backgroundColor: props.color }}>
+          <span className="tag" style={{ backgroundColor:props.color }}>
             {props.tag}
           </span>
           {props.name}{" "}

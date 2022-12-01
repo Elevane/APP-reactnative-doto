@@ -3,9 +3,9 @@
 
 const GetUser = () => {
     const user = localStorage.getItem("user");
-    if(user === null)
+    if(user === null || user === undefined)
         return false
-    const parsed = JSON.parse(user);
+        const parsed = JSON.parse(user);
     if(parsed.user === null || parsed.user === undefined)
         return false
     let isUndifiend = parsed.user.username === undefined || parsed.user.token === undefined || parsed.user.id === undefined
