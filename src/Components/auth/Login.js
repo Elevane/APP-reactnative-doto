@@ -1,23 +1,6 @@
 import React, {  useState } from "react";
+import useApi from "../../Hooks/useApi";
 
-
-async function authenticate(email, password, googleId) {
-  const user = {
-    email: email,
-    password: password,
-    GoogleToken : googleId
-  };
-
-  return fetch(process.env.REACT_APP_DBHOST_USERS + "/authenticate" , {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      Accept: "*/*",
-    },
-    body: JSON.stringify(user),
-  }).then((data) => data.json());
-}
 
 
 
@@ -30,32 +13,14 @@ export default function Login() {
   
   const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log("Authentification starting")
-      await authenticate(email, password, null).then((value) => {
-        if(value === null || value=== undefined)
-          alert("Return value can't be read")
-        else if (!value.isSuccess) {
-          alert(value.errorMessage);
-        }
-        else if (value.result === undefined) {
-          alert("result is undifiend",);
-        }
-        else{
-          localStorage.setItem(
-            "user",
-            JSON.stringify({ user: value.result })
-          );
-          window.location.href = "/"
-        }
-      }).catch(function() {
-        alert("Failed to fetch api");
-    });;
+      useApi.Authenticate(email, password);
   };
 
   const handleCreateAccount = async (e) => {
     e.preventDefault();
     window.location.href = "/CreateAccount";
   };
+
   return (
     <div id="login-form-wrap">
       <h2> Login </h2>{" "}

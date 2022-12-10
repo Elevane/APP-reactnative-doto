@@ -1,40 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import useApi from "../../Hooks/useApi";
 
-async function register(email, password, username, googletoken) {
-  const user = {
-    username: username,
-    email: email,
-    password: password,
-    googletoken: googletoken,
-  };
-  return fetch(process.env.REACT_APP_DBHOST_USERS + "/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      Accept: "*/*",
-    },
-    body: JSON.stringify(user),
-  }).then((data) => data.json());
-}
 
 export default function CreateAccount() {
-  const [email, setEmail] = React.useState();
-  const [password, setPassword] = React.useState();
-  const [username, setUserName] = React.useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [username, setUserName] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await register(email, password, username, null).then((value) => {
-      if (!value.isSuccess) {
-        alert(value.errorMessage);
-      } else if (value.result === undefined) {
-        alert("Failed connection Error");
-      } else {
-        localStorage.setItem("user", JSON.stringify({ user: value.result }));
-        window.location.href = "/";
-      }
-    });
+    useApi.CreateAccount(email, password, username);
   };
 
   return (

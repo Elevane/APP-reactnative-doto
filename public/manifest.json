@@ -18,11 +18,9 @@
       "sizes": "512x512"
     }
   ],
+  "tags": [{ "name" :"ecole", "color" : "#E4A11B" },{ "name" :"perso", "color" : "#54B4D3" }],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff",
-  "Tags" : [
-    {"ecole" : "#3B71CA"}
-  ]
+  "background_color": "#ffffff"
 }

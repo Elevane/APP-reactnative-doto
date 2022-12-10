@@ -1,64 +1,116 @@
-.tag{
-    border-radius: 5px;
-    margin: 5px;
-    margin-right: 10px;
-    padding: 2px 10px 2px 10px;
-    color: white;
+.tag {
+  border-radius: 5px;
+  margin: 5px;
+  margin-right: 10px;
+  padding: 2px 10px 2px 10px;
+  color: white;
 }
-ul{
-    
+
+ul {
+
 }
-.project{
-    list-style: none;
+.project {
+  list-style: none;
 }
+
 .project > li {
-   
 }
-.project summary{
-    margin-bottom: 15px;
-    
+.project summary {
+  margin-bottom: 15px;
 }
 option {
-    border : "none";
-    outline: none;
+  border: "none";
+  outline: none;
 }
 
-
-.child{
-    list-style: none;
-    border-bottom: 1px solid #9FA6B2;
-    border-left: 1px solid #9fb2a9;
-    border-bottom-left-radius: 5px;
-    width: 500px;
-    height: 150px;  
+#title {
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-/* Hide scrollbar for Chrome, Safari and Opera */
+h1 {
+  padding: 0;
+  margin: 0;
+}
+
+.child {
+  list-style: none;
+  border-bottom: 1px solid #9fa6b2;
+  border-left: 1px solid #9fb2a9;
+  border-bottom-left-radius: 5px;
+  width: 500px;
+  height: 150px;
+}
+/* Hide scrollbar for Chrome; Safari and Opera */
 .child_body::-webkit-scrollbar {
-    display: none;
-  }
-.child input{
-    border: none;
-    outline-style: none;
-    box-shadow: none;
-    border-color: transparent;
-    border-bottom: 0.3px solid grey;
-    font-size: 12px;
+  display: none;
 }
-.child h5{
-    margin: 2px;
-    font-weight: bold;
-    padding-left: 25px ;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.child input {
+  border: none;
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
+  border-bottom: 0.3px solid grey;
+  font-size: 12px;
+}
+#home{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+.child h5 {
+  margin: 2px;
+  font-weight: bold;
+  padding-left: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.child h5:hover {
+  cursor: pointer;
+}
 
- 
+.child_body {
+  font-size: 12px;
+  margin-left: 60px;
+  height: 20%;
+  overflow-y: scroll;
 }
-.child h5:hover{
-    cursor: pointer;
+
+.add_todo_button {
+  background-color: #9fa6b2;
+  color: white;
 }
-.child_body{
-    font-size: 12px;
-    margin-left: 60px; 
-    height: 20%;
-    overflow-y: scroll; /* Hide vertical scrollbar */
+
+.home_buttons {
+  width: 80px;
+  padding: 2px 5px 2px 5px;
+  border: none;
+  margin: 1px;
+  border-radius: 2px;
+  color: white;
 }
+.save_button {
+  background-color: #14a44d;
+}
+
+.logout_button {
+  background-color: #dc4c64;
+}
+.btn_del_project{
+  margin-left: 10px;
+  border :none;
+  color: azure;
+  background-color: #dc4c64;
+}
+.todo{
+  cursor: pointer;
+}
+
+@media (max-width: 850px) {
+    h1{
+        font-size: 25px;
+    }
+ }

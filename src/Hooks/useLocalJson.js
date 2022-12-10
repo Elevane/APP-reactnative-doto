@@ -1,12 +1,12 @@
-const json = {
-  tags: [{ "name" :"ecole", "color" : "#3B71CA" },{ "name" :"perso", "color" : "#2cb074" }],
-};
 
+const json = {
+  tags: [{ "name" :"ecole", "color" : "#E4A11B" },{ "name" :"perso", "color" : "#54B4D3" }],
+};
 
 const GetTags = () => {
+ 
   return json.tags;
 };
-
 
 
 const getColor = (e) => {
