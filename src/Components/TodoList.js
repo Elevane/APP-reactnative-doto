@@ -10,11 +10,14 @@ export default function TodoList({ props, handleDelete }) {
   const ShowHide = (e) => {
     setClosed(!closed);
   };
+  
+  
+
 
   const HandleSubmit = (e) => {
     e.preventDefault();
-    if (childs.filter((p) => p.name === newItem.name).length > 0) {
-      alert("A child with same name already exist");
+    if (childs.some((p) => p.name === newItem)) {
+      alert("A child with same name already exist" );
       return;
     }
     useLocalStorage.AddTodo(props.name, newItem);
@@ -25,12 +28,15 @@ export default function TodoList({ props, handleDelete }) {
 
   const updateTodo = (descValue, activeValue) => {
     useLocalStorage.SetActive(props.name, descValue, activeValue);
-    let newChilds = childs;
-    newChilds.filter(x => x.desc = descValue)[0].active = activeValue
-    setChilds(newChilds)
+    const toUpdate = childs.filter(x => x.desc == descValue)[0]
+    let index = childs.indexOf(toUpdate)
+    toUpdate.active = activeValue;
+    childs.splice(index, 1)
+    setChilds([...childs, toUpdate])
   }
+
   return (
-    <>{props.active  == true ?  <ul
+    <>{props.active &&  <ul
       key={props.key}
       className="child"
       style={closed ? { height: "35px" } : { height: "150px" }}
@@ -40,17 +46,15 @@ export default function TodoList({ props, handleDelete }) {
           <span className="tag" style={{ backgroundColor: props.color }}>
             {props.tag}
           </span>
-          {props.name}{" "}
-          {!closed ? (
+          {props.name}
+          
             <button
               onClick={() => handleDelete(props.name)}
               className="btn_del_project"
             >
-              x
+            v
             </button>
-          ) : (
-            ""
-          )}
+          
         </h5>
         <ul
           className="child_body"
@@ -60,10 +64,10 @@ export default function TodoList({ props, handleDelete }) {
               : { display: "block", height: "90px" }
           }
         >
-          {childs.map((elm, index) => (
+          {childs.filter(x => x.active).map((elm, index) => (
             <li key={index} onClick={() => updateTodo(elm.desc, !elm.active)} className="todo" style={ !elm.active ? {backgroundColor: "#DCDCDC"} : {backgroundColor: "white"}} >{elm.desc} </li>
           ))}
-          <li>
+          <li style={{marginBottom : "5px"}}>
             <form onSubmit={(e) => HandleSubmit(e)}>
               <input
                 type="text"
@@ -77,9 +81,12 @@ export default function TodoList({ props, handleDelete }) {
               ></input>
             </form>
           </li>
+          {childs.filter(x => !x.active).map((elm, index) => (
+            <li key={index} onClick={() => updateTodo(elm.desc, !elm.active)} className="todo" style={ !elm.active ? {backgroundColor: "#DCDCDC"} : {backgroundColor: "white"}} >{elm.desc} </li>
+          ))}
         </ul>
       </li>
-    </ul>: <></>}</>
+    </ul>}</>
    
   );
 }

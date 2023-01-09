@@ -95,15 +95,32 @@ h1 {
 .save_button {
   background-color: #14a44d;
 }
-
+.history_inactive{
+  background-color: white;
+  border: 0.5px solid #535df1;
+  color: #535df1;
+}
+.history_active, .history_inactive:hover {
+  color: white;
+  cursor: pointer;
+  border: 0.5px solid #535df1;
+  background-color: #535df1;
+}
 .logout_button {
   background-color: #dc4c64;
 }
 .btn_del_project{
   margin-left: 10px;
   border :none;
+  cursor: pointer;
   color: azure;
-  background-color: #dc4c64;
+  background-color: #4cbfdc;
+}
+.btn_del_project:hover{
+  scale: 120%;
+  background-color: azure;
+  color: #4cbfdc;
+  border: 1px solid #4cbfdc;
 }
 .todo{
   cursor: pointer;

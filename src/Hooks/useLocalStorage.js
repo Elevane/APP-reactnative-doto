@@ -22,9 +22,9 @@ const AddTodo = (projectName, newTodo) => {
     let user = GetUser();
     if(!user)
         return;
-    let project = JSON.parse(user.todo).projects.filter(p => p.name == projectName)[0]
+    let project = JSON.parse(user.todo).projects.filter(p => p.name === projectName)[0]
     project.childs.push({"desc" : newTodo})
-    let otherProjects =  JSON.parse(user.todo).projects.filter(p => p.name != projectName)
+    let otherProjects =  JSON.parse(user.todo).projects.filter(p => p.name !== projectName)
     otherProjects.push(project)
     user.todo = JSON.stringify({ "projects" : (Object.values(otherProjects)) })
     localStorage.setItem("user", JSON.stringify({user: user }))
@@ -42,7 +42,7 @@ const AddProject = (newProject) => {
 const RemoveFromList = (elm, key, list ) => {
     let newArray = []
     list.forEach(element => {
-        if(element[key] == elm[key])
+        if(element[key] === elm[key])
             element.active = false;
         newArray.push(element)
     });
@@ -54,8 +54,7 @@ const DeleteProject = (projectName) => {
     if(!user)
         return;
     const projects = JSON.parse(user.todo).projects
-    let project = projects.filter(p => p.name == projectName)[0]
-    const index =  projects.indexOf(project);   
+    let project = projects.filter(p => p.name === projectName)[0]
     const newProjects = RemoveFromList(project, "name", projects)
     user.todo = JSON.stringify({ "projects" : newProjects })
     localStorage.setItem("user", JSON.stringify({user: user }))
@@ -66,23 +65,23 @@ const SetActive = (projectName , name, activeValue) => {
     if(!user)
         return;
     let projects = JSON.parse(user.todo).projects;
-    if(projects == null)
+    if(projects === null)
         return;
-    let project = projects.filter(p => p.name == projectName)[0]
-    if(project == null || project.childs == null || project.childs == undefined)
+    let project = projects.filter(p => p.name === projectName)[0]
+    if(project === null || project.childs === null || project.childs === undefined)
         return;
    
-    let todo = project.childs.filter(x => x.desc == name)[0];
+    let todo = project.childs.filter(x => x.desc === name)[0];
     
     
-    if(todo == null )
+    if(todo === null)
         return;
     
     let newTodo = {
         desc : todo.desc,
         active : activeValue
     }
-    //reconbstructiondes todo / childs
+    //reconbstruction des todo / childs
     const index =  project.childs.indexOf(todo);     
     project.childs.splice(index, 1); 
     project.childs.push(newTodo);

@@ -20,8 +20,12 @@ const Authenticate = (email, password) => {
     null,
     user
   ).then((value) => {
-    localStorage.setItem("user", JSON.stringify({ user: value.result }));
-    window.location.href = "/";
+    if(value  !== null || value !== undefined)
+    {
+      localStorage.setItem("user", JSON.stringify({ user: value.result }));
+      window.location.href = "/";
+    }
+   
   });
 };
 
@@ -38,6 +42,7 @@ const CreateAccount = (email, password, username) => {
     localUser.token,
     user
   ).then((value) => {
+    
     localStorage.setItem("user", JSON.stringify({ user: value.result }));
     window.location.href = "/";
   });
@@ -49,15 +54,15 @@ function Request(route, method, token = null, requestbody = null) {
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
-      Authorization: token != null ? token : "",
+      Authorization: token !== null ? token : "",
       Accept: "*/*",
     },
     body: JSON.stringify(requestbody),
   })
     .then((data) => data.json())
     .catch(function (e, a, b) {
-      console.log(e, a, b);
-      alert("Error while fetching the api, error given :" + e);
+      alert(`Error while fetching the api, error given : ${e}  || ${a} || ${b}`);
+      console.log(`Error while fetching the api, error given : ${e}  || ${a} || ${b}`);
     });
 }
 

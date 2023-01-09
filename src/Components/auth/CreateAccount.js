@@ -14,7 +14,7 @@ export default function CreateAccount() {
 
   return (
     <div id="login-form-wrap">
-      <h2 className="pb-2"> Create account </h2>{" "}
+      <h2 className="pb-2"> Create account </h2>
       <form id="login-form" onSubmit={handleSubmit}>
         <p>
           <input
@@ -25,7 +25,7 @@ export default function CreateAccount() {
             placeholder="Email"
             required
           />
-        </p>{" "}
+        </p>
         <p>
           <input
             type="text"
@@ -35,7 +35,7 @@ export default function CreateAccount() {
             placeholder="username"
             required
           />
-        </p>{" "}
+        </p>
         <p>
           <input
             type="password"
@@ -45,21 +45,21 @@ export default function CreateAccount() {
             placeholder="Password"
             required
           />
-        </p>{" "}
+        </p>
         <p>
           <input type="submit" id="create" value="create" />
-        </p>{" "}
-      </form>{" "}
+        </p>
+      </form>
       <div id="create-account-wrap">
         <p>
-          {" "}
-          Already a member,{" "}
+          
+          Already a member,
           <a href="/login">
             {"   "}
-            Login{" "}
+            Login
           </a>
         </p>
-      </div>{" "}
+      </div>
     </div>
   );
 }

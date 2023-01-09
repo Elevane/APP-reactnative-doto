@@ -23,7 +23,7 @@ export default function Login() {
 
   return (
     <div id="login-form-wrap">
-      <h2> Login </h2>{" "}
+      <h2> Login </h2>
       <form id="login-form" onSubmit={handleSubmit}>
         <p>
           <input
@@ -34,7 +34,7 @@ export default function Login() {
             placeholder="email"
             required
           />
-        </p>{" "}
+        </p>
         <p>
           <input
             type="password"
@@ -44,21 +44,21 @@ export default function Login() {
             placeholder="password"
             required
           />
-        </p>{" "}
+        </p>
         <p>
           <input type="submit" id="login" value="Login" />
-        </p>{" "}
-      </form>{" "}
+        </p>
+      </form>
       <div id="create-account-wrap">
         <p>
-          {" "}
-          Not a member ?{" "}
+          
+          Not a member ?
           <a href="/create" onClick={handleCreateAccount}>
-            {" "}
-            Create Account{" "}
+            
+            Create Account
           </a>
         </p>
-      </div>{" "}
+      </div>
     </div>
   );
 }

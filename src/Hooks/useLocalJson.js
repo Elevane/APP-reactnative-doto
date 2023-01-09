@@ -11,7 +11,7 @@ const GetTags = () => {
 
 const getColor = (e) => {
 
-  return json.tags.filter(tag => tag.name == e)[0].color
+  return json.tags.filter(tag => tag.name === e)[0].color
 }
 
 

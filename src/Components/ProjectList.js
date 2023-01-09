@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Todo from "./TodoList";
 import useLocalJson from "../Hooks/useLocalJson";
 import useLocalStorage from "../Hooks/useLocalStorage";
+import HistoryTodo from "./HistoryTodo";
 
-export default function ProjectList({ props, tags }) {
+export default function ProjectList({ props, tags, history }) {
   const [closed, setClosed] = useState(false);
   const [tag, setTag] = useState(tags);
   const [data, setData] = useState(props);
@@ -11,8 +12,8 @@ export default function ProjectList({ props, tags }) {
 
   const HandleSubmit = (e) => {
     e.preventDefault();
-    if (data.filter((p) => p.name === name && p.active == true).length > 0) {
-      alert("A porject with same name already exist");
+    if (data.some((p) => p.name === name && p.tag === tag)) {
+        alert("A porject with same name already exist");
       return;
     }
     const newItem = {
@@ -24,6 +25,7 @@ export default function ProjectList({ props, tags }) {
     };
     setData([...data, newItem]);
     useLocalStorage.AddProject(newItem);
+    setName("")
   };
 
   const ShowHide = () => {
@@ -32,23 +34,24 @@ export default function ProjectList({ props, tags }) {
 
   const handleDelete = (name) => {
     useLocalStorage.DeleteProject(name);
-    let projet = data.filter(x => x.name == name && x.active== true)[0]
+    let projet = data.filter(x => x.name === name && x.active=== true)[0]
     let index = data.indexOf(projet)
     projet.active = false;
     data.splice(index, 1)
     setData([...data, projet]) 
   }
   return (
-    
+    <>
     <ul onClick={ShowHide} className="project">
-      {data.map((elm, index) => (
+      {data.filter(x => x.active).map((elm, index) => (
+        elm.active &&
         <li key={index}>
           <Todo
             style={closed ? { display: "none" } : { display: "block" }}
             props={elm} handleDelete={handleDelete}
           />
         </li>
-      ))}
+      ))}   
       <li>
         <ul key={props.key} className="child" style={{ height: "35px" }}>
           <li>
@@ -79,7 +82,18 @@ export default function ProjectList({ props, tags }) {
             </h5>
           </li>
         </ul>
-      </li>
+      </li>     
     </ul>
+    <ul  className="project">
+      {console.log(data.filter(x => !x.active))}
+      {history && data.filter(x => !x.active).map((elm, index) => (
+          <li key={index} style={{ backgroundColor: "#f7f7f7" }}>
+            <HistoryTodo
+              props={elm}
+            />
+          </li>
+        ))}
+    </ul>
+    </>
   );
 }
