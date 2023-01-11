@@ -1,6 +1,6 @@
 
 const json = {
-  tags: [{ "name" :"ecole", "color" : "#E4A11B" },{ "name" :"perso", "color" : "#54B4D3" }],
+  tags: [{ "name" :"ecole", "color" : "#588157" },{ "name" :"perso", "color" : "#54B4D3" }, { "name" :"bmm", "color" : "#f28482" }],
 };
 
 const GetTags = () => {

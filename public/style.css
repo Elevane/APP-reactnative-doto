@@ -1,3 +1,13 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+}
+ul{
+  margin: 0;
+  padding: 0;
+}
+
 .tag {
   border-radius: 5px;
   margin: 5px;
@@ -6,14 +16,12 @@
   color: white;
 }
 
-ul {
-
-}
 .project {
   list-style: none;
 }
 
-.project > li {
+.project_history{
+  width: 90%;
 }
 .project summary {
   margin-bottom: 15px;
@@ -22,16 +30,26 @@ option {
   border: "none";
   outline: none;
 }
-
+#home{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 #title {
   width: 20%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 h1 {
   padding: 0;
   margin: 0;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .child {
@@ -39,13 +57,13 @@ h1 {
   border-bottom: 1px solid #9fa6b2;
   border-left: 1px solid #9fb2a9;
   border-bottom-left-radius: 5px;
-  width: 500px;
+  width:   90%;
   height: 150px;
 }
-/* Hide scrollbar for Chrome; Safari and Opera */
 .child_body::-webkit-scrollbar {
   display: none;
 }
+
 .child input {
   border: none;
   outline-style: none;
@@ -54,6 +72,19 @@ h1 {
   border-bottom: 0.3px solid grey;
   font-size: 12px;
 }
+
+h5 > form {
+  margin: auto;
+}
+h5{
+  font-weight: lighter;
+  display: flex;
+  align-items: center;
+}h5 p {
+  margin: 0;
+  padding: 0;
+}
+
 #home{
   display: flex;
   flex-direction: column;
@@ -64,12 +95,14 @@ h1 {
 .child h5 {
   margin: 2px;
   font-weight: bold;
-  padding-left: 25px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-right: 20px;
 }
 .child h5:hover {
   cursor: pointer;
+}
+#tag-select{
+  border: none;
+  margin-right: 5px;
 }
 
 .child_body {
@@ -95,11 +128,13 @@ h1 {
 .save_button {
   background-color: #14a44d;
 }
+
 .history_inactive{
   background-color: white;
   border: 0.5px solid #535df1;
   color: #535df1;
 }
+
 .history_active, .history_inactive:hover {
   color: white;
   cursor: pointer;
@@ -108,20 +143,9 @@ h1 {
 }
 .logout_button {
   background-color: #dc4c64;
+  border: 0.5px solid #dc4c64;
 }
-.btn_del_project{
-  margin-left: 10px;
-  border :none;
-  cursor: pointer;
-  color: azure;
-  background-color: #4cbfdc;
-}
-.btn_del_project:hover{
-  scale: 120%;
-  background-color: azure;
-  color: #4cbfdc;
-  border: 1px solid #4cbfdc;
-}
+
 .todo{
   cursor: pointer;
 }
@@ -149,12 +173,12 @@ h1 {
   }
   }
 
-@media (max-width: 850px) {
-    h1{
-        font-size: 25px;
-    }
- }
 
+ .project{
+  width: 530px;
+  padding-left: 0;
+  margin-left: 0;
+}
  .btn-color:hover{
   background-color: white;
   color: #0e1c36;
@@ -187,10 +211,36 @@ h1 {
 a{
   text-decoration: none;
 }
-
-.marker {
-  
+#add_task, .add_todo_button{
+  height: 25px;
+  width: 25px;
+  margin-left: 10px ;
+  color: white;
+  background-color: #535df1;
+  border-radius: 3px;
 }
+#add_task:hover, .add_todo_button:hover{
+  color: #535df1; 
+  background-color:  white;
+  border: 0.5px solid #535df1;
+}
+h5 div{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.btn_del_project{
+  align-items: flex-end;
+  height: 25px;
+  width: 25px;
+  border :none;
+  cursor: pointer;
+  background-color: azure;
+  color: grey;
+  border: 0.5px solid grey;
+  border-radius: 3px;
+}
+
 .chart{
   width: 30%;
   height: 30%;
@@ -198,4 +248,28 @@ a{
   padding: 25px;
   border: 1px solid lightgray;
   border-radius: 5px;
+}
+
+.form_child li, .child_history li, .child_history, .child {
+  width: 100%;
+}
+.form_child, .child_history {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 850px) {
+  h1{
+      font-size: 25px;
+  }
+  h5 p{
+    font-size: 12px;
+
+  }
+
+  .project, .project_history{
+    width: 90%;
+    padding-left: 0;
+    margin-left: 0;
+  }
 }

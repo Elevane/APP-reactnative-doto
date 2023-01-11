@@ -26,8 +26,7 @@ const Authenticate = (email, password) => {
       window.location.href = "/";
     }
     else if(value.errorMessage !== undefined )
-        alert(`Error while fetching : server response  =>  ${value.errorMessage}`)  
-     
+        alert(`Error while fetching : server response  =>  ${value.errorMessage}`) 
   });
 };
 
@@ -49,8 +48,7 @@ const CreateAccount = (email, password, username) => {
       window.location.href = "/";
     }
     else if(value.errorMessage !== undefined )
-        alert(`Error while fetching : server response  =>  ${value.errorMessage}`)  
-   
+        alert(`Error while fetching : server response  =>  ${value.errorMessage}`)   
   });
 };
 
@@ -68,7 +66,6 @@ function Request(route, method, token = null, requestbody = null) {
     .then((data) => data.json())
     .catch(function (e, a, b) {
       alert(`Error while fetching the api, error given : ${e}  || ${a} || ${b}`);
-      console.log(`Error while fetching the api, error given : ${e}  || ${a} || ${b}`);
     });
 }
 

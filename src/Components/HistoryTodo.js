@@ -4,8 +4,8 @@ export default function HistoryTodo({ props }) {
   return (
     <ul
       key={props.key}
-      className="child"
-      style={ { height: "35px", disabled:"true"} }
+      className="child child_history"
+      style={{ height: "50px", disabled:"true"} }
         disabled
     >
       <li>

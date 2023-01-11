@@ -42,7 +42,7 @@ export default function ProjectList({ props, tags, history }) {
   }
   return (
     <>
-    <ul onClick={ShowHide} className="project">
+    <ul onClick={ShowHide} className="project" >
       {data.filter(x => x.active).map((elm, index) => (
         elm.active &&
         <li key={index}>
@@ -53,14 +53,14 @@ export default function ProjectList({ props, tags, history }) {
         </li>
       ))}   
       <li>
-        <ul key={props.key} className="child" style={{ height: "35px" }}>
+        <ul key={props.key} className="child form_child" style={{ height: "50px" }}>
           <li>
             <h5>
               <form onSubmit={(e) => HandleSubmit(e)}>
                 <select
                   value={tag}
                   onChange={(e) => setTag(e.target.value)}
-                  id="pet-select"
+                  id="tag-select"
                 >
                   {useLocalJson.GetTags().map((elm, index) => (
                     <option key={index} value={elm.name}>
@@ -74,7 +74,7 @@ export default function ProjectList({ props, tags, history }) {
                   onChange={(e) => setName(e.target.value)}
                 ></input>
                 <input
-                  style={{ backgroundColor: "#9FA6B2", margin: "1px" }}
+                  id="add_task"
                   type="submit"
                   value="+"
                 ></input>
@@ -82,10 +82,12 @@ export default function ProjectList({ props, tags, history }) {
             </h5>
           </li>
         </ul>
-      </li>     
+      </li> 
+      <li>
+        </li>    
     </ul>
-    <ul  className="project">
-      {console.log(data.filter(x => !x.active))}
+    { history && <h3> historique</h3> }
+    <ul  className="project project_history">
       {history && data.filter(x => !x.active).map((elm, index) => (
           <li key={index} style={{ backgroundColor: "#f7f7f7" }}>
             <HistoryTodo

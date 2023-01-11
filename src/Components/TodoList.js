@@ -46,21 +46,21 @@ export default function TodoList({ props, handleDelete }) {
           <span className="tag" style={{ backgroundColor: props.color }}>
             {props.tag}
           </span>
-          {props.name}
-          
-            <button
+          <p>{props.name}</p>
+          <div><button
               onClick={() => handleDelete(props.name)}
               className="btn_del_project"
             >
             v
-            </button>
+            </button></div>
+            
           
         </h5>
         <ul
           className="child_body"
           style={
             closed
-              ? { display: "none", height: "35px" }
+              ? { display: "none", height: "50px" }
               : { display: "block", height: "90px" }
           }
         >

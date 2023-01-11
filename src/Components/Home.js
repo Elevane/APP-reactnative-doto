@@ -20,14 +20,12 @@ export default function Home() {
     <div id="home">
       <h1>
         Liste des Projets de
-        {user !== false ? (
-          <strong style={{ color: "red" }}>{` ${user.username} `}</strong>
-        ) : (
-          ""
-        )}
+        {user &&
+          <strong style={{ color: "grey" }}>{` ${user.username} `}</strong>
+         }
       </h1>
-      <article> <button
-        onClick={() => setHistory(!history)}
+      <article style={{margin : " 10px 0 30px 0"}}> <button
+        onClick={() => { console.log(history);setHistory(!history)}}
         className={ history ? "home_buttons history_active" : "home_buttons history_inactive" }
         type="submit"
         value="history"
@@ -36,16 +34,15 @@ export default function Home() {
       </button>
       <button
         onClick={HandleSave}
-        className="home_buttons save_button"
+        className="home_buttons history_active"
         type="submit"
         value="Save"
       >
         Save
-      </button>
-    
+      </button>   
       <button
         onClick={handleLogout}
-        className="home_buttons logout_button"
+        className="home_buttons history_active logout_button"
         type="submit"
         value="Logout"
       >
@@ -59,9 +56,7 @@ export default function Home() {
             ? useLocalJson.GetTags()[0].name
             : "Default"
         }
-      />
-     
-       
+      />      
     </div>
   );
 }
