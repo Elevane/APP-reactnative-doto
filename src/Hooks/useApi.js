@@ -20,7 +20,7 @@ const Authenticate = (email, password) => {
     null,
     user
   ).then((value) => {
-    if(value  !== null || value !== undefined)
+    if(value  != null && value != undefined && value.result != null && value.result != undefined)
     {
       localStorage.setItem("user", JSON.stringify({ user: value.result }));
       window.location.href = "/";
