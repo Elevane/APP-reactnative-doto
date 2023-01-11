@@ -131,3 +131,43 @@ h1 {
         font-size: 25px;
     }
  }
+
+ .btn-color:hover{
+  background-color: white;
+  color: #0e1c36;
+  border: 0.5px solid #0e1c36;
+  }
+
+.btn-color{
+  width: 60%;
+  background-color: #0e1c36;
+  color: white;
+}
+
+.profile-image-pic{
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+
+
+.cardbody-color{
+  background-color: #ffffff;
+}
+
+a{
+  text-decoration: none;
+}
+
+.marker {
+  
+}
+.chart{
+  width: 30%;
+  height: 30%;
+  margin: 25px;
+  padding: 25px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}

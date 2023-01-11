@@ -21,7 +21,7 @@ export default function Home() {
       <h1>
         Liste des Projets de
         {user !== false ? (
-          <strong style={{ color: "red" }}>{user.username}</strong>
+          <strong style={{ color: "red" }}>{` ${user.username} `}</strong>
         ) : (
           ""
         )}
