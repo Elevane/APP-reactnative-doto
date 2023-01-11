@@ -6,10 +6,13 @@ export default function CreateAccount() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [username, setUserName] = useState();
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
+    setLoading(true)
     e.preventDefault();
-    useApi.CreateAccount(email, password, username);
+    await useApi.CreateAccount(email, password, username);
+    setLoading(false)
   };
 
   return (
@@ -73,12 +76,13 @@ export default function CreateAccount() {
                 />
               </div>
               <div className="text-center">
-              <input
+              { !loading ? <input
                 type="submit"
-                id="Créer"
-                value="Créer le compte"
+                id="login"
+                value="Login"
                 className="btn-color px-5 mb-5 w-100"
-              />
+              />:
+              <div className="btn-color-loading px-5 mb-5 w-100" ><div className="loader"></div></div>}
               </div>
               <div
                 id="emailHelp"

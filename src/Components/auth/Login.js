@@ -4,11 +4,13 @@ import useApi from "../../Hooks/useApi";
 export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
+  const [loading, setLoading] = useState(false);
   
   const handleSubmit = async (e) => {
+      setLoading(true)
       e.preventDefault();
-      useApi.Authenticate(email, password);
+      await useApi.Authenticate(email, password);
+      setLoading(false)
   };
 
   const handleCreateAccount = async (e) => {
@@ -62,13 +64,15 @@ export default function Login() {
                 required
               />
             </div>
-            <div className="text-center">
-              <input
+            <div className="text-center" >
+              { !loading ? <input
                 type="submit"
                 id="login"
                 value="Login"
                 className="btn-color px-5 mb-5 w-100"
-              />
+              />:
+              <div className="btn-color-loading px-5 mb-5 w-100" ><div className="loader"></div></div>}
+              
             </div>
             <div
               id="emailHelp"

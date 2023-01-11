@@ -25,7 +25,9 @@ const Authenticate = (email, password) => {
       localStorage.setItem("user", JSON.stringify({ user: value.result }));
       window.location.href = "/";
     }
-   
+    else if(value.errorMessage !== undefined )
+        alert(`Error while fetching : server response  =>  ${value.errorMessage}`)  
+     
   });
 };
 
@@ -42,9 +44,13 @@ const CreateAccount = (email, password, username) => {
     localUser.token,
     user
   ).then((value) => {
-    
-    localStorage.setItem("user", JSON.stringify({ user: value.result }));
-    window.location.href = "/";
+    if(value  != null && value != undefined && value.result != null && value.result != undefined){
+      localStorage.setItem("user", JSON.stringify({ user: value.result }));
+      window.location.href = "/";
+    }
+    else if(value.errorMessage !== undefined )
+        alert(`Error while fetching : server response  =>  ${value.errorMessage}`)  
+   
   });
 };
 

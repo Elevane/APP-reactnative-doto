@@ -126,6 +126,29 @@ h1 {
   cursor: pointer;
 }
 
+.loader {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 24px;
+  height: 24px;
+  border: 2.5px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  }
+
 @media (max-width: 850px) {
     h1{
         font-size: 25px;
@@ -137,8 +160,13 @@ h1 {
   color: #0e1c36;
   border: 0.5px solid #0e1c36;
   }
-
-.btn-color{
+.btn-color-loading{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+.btn-color, .btn-color-loading{
+  height: 35px;
   width: 60%;
   background-color: #0e1c36;
   color: white;
