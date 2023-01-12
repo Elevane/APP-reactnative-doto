@@ -74,9 +74,6 @@ h1 {
   font-size: 12px;
 }
 
-h5 > form {
- width: 100%;
-}
 .form_child  input[type="text"]{
   font-size: 18px;
   font-weight: bold;
@@ -96,7 +93,7 @@ h5, h5 > div, .child_body div{
 
 }
 .child  p {
-  width: 200px;
+  width: 350px;
 }
 #home{
   display: flex;
@@ -109,6 +106,7 @@ h5, h5 > div, .child_body div{
   margin: 2px;
   font-weight: bold;
   margin-right: 20px;
+  justify-content: space-between;
 }
 .child h5:hover {
   cursor: pointer;
@@ -251,11 +249,8 @@ a{
   background-color:  white;
   border: 1px solid #52796f;
 }
-h5 > div{
-  width: 100%;
-}
+
 h5 .div_btn{
-  width: 100%;
   display: flex;
   justify-content: flex-end;
 }
