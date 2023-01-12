@@ -93,10 +93,10 @@ h5, h5 > div, .child_body div{
 }h5 p {
   margin: 0;
   padding: 0;
-  width: auto;
+
 }
 .child  p {
-  width: 150px;
+  width: 200px;
 }
 #home{
   display: flex;
@@ -251,7 +251,10 @@ a{
   background-color:  white;
   border: 1px solid #52796f;
 }
-h5 div{
+h5 > div{
+  width: 100%;
+}
+h5 .div_btn{
   width: 100%;
   display: flex;
   justify-content: flex-end;

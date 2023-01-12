@@ -46,7 +46,7 @@ export default function TodoList({ props, handleDelete }) {
                 {props.tag}
               </span>
               <p>{props.name}</p>
-              <div>
+              <div className="div_btn">
                 <button
                   onClick={() => handleDelete(props.name)}
                   className="btn_del_project"
@@ -82,7 +82,7 @@ export default function TodoList({ props, handleDelete }) {
                     onChange={(e) => setNewItem(e.target.value)}
                   ></input>
 
-                  <div>
+                  <div className="div_btn">
                     <button className="add_todo_button" type="submit" value="+">
                       <MdLibraryAdd onClick={(e) => HandleSubmit(e)} />
                     </button>
