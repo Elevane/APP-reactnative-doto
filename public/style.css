@@ -146,9 +146,9 @@ h5, h5 > form{
 }
 
 .history_active, .history_inactive:hover {
-  color: #cad2c5;
+  color: white;
   cursor: pointer;
-  border: 0.5px solid #84a98c;
+  border: 0.5px solid white;
   background-color: #84a98c;
 }
 .logout_button {
