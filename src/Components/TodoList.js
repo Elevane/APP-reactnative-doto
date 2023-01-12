@@ -1,6 +1,7 @@
 import React, {  useState } from "react";
 import useLocalStorage from "../Hooks/useLocalStorage";
-
+import { BsArchive } from "react-icons/bs";
+import { MdAddCircleOutline, MdLibraryAdd } from "react-icons/md";
 
 export default function TodoList({ props, handleDelete }) {
   const [closed, setClosed] = useState(true);
@@ -51,7 +52,7 @@ export default function TodoList({ props, handleDelete }) {
               onClick={() => handleDelete(props.name)}
               className="btn_del_project"
               tool            >
-            v
+            <BsArchive className="archive"/>
             </button></div>
             
           
@@ -74,11 +75,15 @@ export default function TodoList({ props, handleDelete }) {
                 value={newItem}
                 onChange={(e) => setNewItem(e.target.value)}
               ></input>
-              <input
-                className="add_todo_button"
-                type="submit"
-                value="+"
-              ></input>
+             
+              <div>
+                  <button
+                    className="add_todo_button"
+                    type="submit"
+                    value="+"
+                    onClick={HandleSubmit}
+                  ><MdLibraryAdd  onClick={HandleSubmit}/></button>
+                </div>
             </form>
           </li>
           {childs.filter(x => !x.active).map((elm, index) => (

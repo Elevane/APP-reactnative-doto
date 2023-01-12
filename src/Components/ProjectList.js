@@ -3,7 +3,7 @@ import Todo from "./TodoList";
 import useLocalJson from "../Hooks/useLocalJson";
 import useLocalStorage from "../Hooks/useLocalStorage";
 import HistoryTodo from "./HistoryTodo";
-
+import { MdAddCircleOutline } from "react-icons/md";
 export default function ProjectList({ props, tags, history }) {
   const [closed, setClosed] = useState(false);
   const [tag, setTag] = useState(tags);
@@ -11,7 +11,7 @@ export default function ProjectList({ props, tags, history }) {
   const [name, setName] = useState("");
 
   const HandleSubmit = (e) => {
-    e.preventDefault();
+   
     if (data.some((p) => p.name === name && p.tag === tag)) {
         alert("A porject with same name already exist");
       return;
@@ -74,11 +74,11 @@ export default function ProjectList({ props, tags, history }) {
                   onChange={(e) => setName(e.target.value)}
                 ></input>
                 <div>
-                  <input
+                  <button
                     id="add_task"
                     type="submit"
-                    value="+"
-                  ></input>
+                    
+                  ><MdAddCircleOutline  onClick={HandleSubmit}/></button>
                 </div>
               </form>
             </h5>
