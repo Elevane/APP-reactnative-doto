@@ -25,7 +25,7 @@ export default function Login() {
       <div className="col-md-6 offset-md-3">
         <h2 className="text-center text-dark mt-5">El Doto</h2>
         <div className="text-center mb-5 text-dark">TP PWA bastien AUBRY</div>
-        <div className="card " style={{width : "60%", margin : "auto"}}>
+        <div className="card auht_form" style={{width : "60%",height: "80%", margin : "auto"}}>
           <form
             className="card-body cardbody-color p-lg-5"
             onSubmit={handleSubmit}
@@ -33,7 +33,7 @@ export default function Login() {
             <div className="text-center">
               <img
                 src="mex.jpg"
-                className="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                className="rounded-circle my-3"
                 width="200px"
                 alt="profile"
               />

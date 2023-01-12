@@ -22,8 +22,7 @@ export default function CreateAccount() {
           <h2 className="text-center text-dark mt-5">El Doto</h2>
       
           <div className="text-center mb-5 text-dark">TP PWA bastien AUBRY</div>
-          <h3 className="text-center text-blue mt-5">Créer un compte</h3>
-          <div className="card"  style={{width : "60%", margin : "auto"}}>
+          <div className="card auht_form"  style={{width : "60%", height: "80%", margin : "auto"}}>
             <form
               className="card-body cardbody-color p-lg-5"
               onSubmit={handleSubmit}
@@ -31,7 +30,7 @@ export default function CreateAccount() {
               <div className="text-center">
                 <img
                   src="mex.jpg"
-                  className="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                  className=" rounded-circle my-3"
                   width="200px"
                   alt="profile"
                 />

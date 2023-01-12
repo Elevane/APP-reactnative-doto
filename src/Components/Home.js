@@ -7,12 +7,12 @@ import useLocalJson from "../Hooks/useLocalJson";
 export default function Home() {
   const user = useLocalStorage.GetUser();
   const [history, setHistory] = useState(false)
+
   const handleLogout = () => {
     window.location.href = "/logout";
   };
 
-  const HandleSave = (e) => {
-    e.preventDefault();
+  const HandleSave = () => {
     useApi.UpdateUser();
   };
 
@@ -25,7 +25,7 @@ export default function Home() {
          }
       </h1>
       <article style={{margin : " 10px 0 30px 0"}}> <button
-        onClick={() => { console.log(history);setHistory(!history)}}
+        onClick={() => setHistory(!history)}
         className={ history ? "home_buttons history_active" : "home_buttons history_inactive" }
         type="submit"
         value="history"

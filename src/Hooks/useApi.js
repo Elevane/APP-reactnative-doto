@@ -6,6 +6,7 @@ const UpdateUser = () => {
     alert("No user is Authentificated");
     return;
   }
+  console.log(user)
   Request(process.env.REACT_APP_DBHOST_TODO, "PUT", user.token, user.todo);
 };
 

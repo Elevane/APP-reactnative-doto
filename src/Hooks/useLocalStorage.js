@@ -23,7 +23,7 @@ const AddTodo = (projectName, newTodo) => {
     if(!user)
         return;
     let project = JSON.parse(user.todo).projects.filter(p => p.name === projectName)[0]
-    project.childs.push({"desc" : newTodo})
+    project.childs.push({"desc" : newTodo, active : true})
     let otherProjects =  JSON.parse(user.todo).projects.filter(p => p.name !== projectName)
     otherProjects.push(project)
     user.todo = JSON.stringify({ "projects" : (Object.values(otherProjects)) })

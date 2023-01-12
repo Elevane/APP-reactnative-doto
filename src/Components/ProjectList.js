@@ -11,7 +11,6 @@ export default function ProjectList({ props, tags, history }) {
   const [name, setName] = useState("");
 
   const HandleSubmit = (e) => {
-   
     if (data.some((p) => p.name === name && p.tag === tag)) {
         alert("A porject with same name already exist");
       return;
@@ -40,6 +39,7 @@ export default function ProjectList({ props, tags, history }) {
     data.splice(index, 1)
     setData([...data, projet]) 
   }
+
   return (
     <>
     <ul onClick={ShowHide} className="project" >
@@ -56,7 +56,7 @@ export default function ProjectList({ props, tags, history }) {
         <ul key={props.key} className="child form_child" style={{ height: "50px" }}>
           <li>
             <h5>
-              <form onSubmit={(e) => HandleSubmit(e)}>
+              <div>
                 <select
                   value={tag}
                   onChange={(e) => setTag(e.target.value)}
@@ -76,11 +76,9 @@ export default function ProjectList({ props, tags, history }) {
                 <div>
                   <button
                     id="add_task"
-                    type="submit"
-                    
-                  ><MdAddCircleOutline  onClick={HandleSubmit}/></button>
+                  ><MdAddCircleOutline  onClick={(e) => HandleSubmit(e)}/></button>
                 </div>
-              </form>
+              </div>
             </h5>
           </li>
         </ul>
