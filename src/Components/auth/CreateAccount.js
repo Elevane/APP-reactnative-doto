@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useApi from "../../Hooks/useApi";
-
+import routes from "../../Hooks/useRoutes";
 
 export default function CreateAccount() {
   const [email, setEmail] = useState();
@@ -9,10 +9,14 @@ export default function CreateAccount() {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
-    setLoading(true)
     e.preventDefault();
-    await useApi.CreateAccount(email, password, username);
-    setLoading(false)
+    setLoading(true);
+    await useApi.createAccount(email, password, username);
+    setLoading(false);
+  };
+
+  const handleLogin = () => {
+    routes.moveTo("login");
   };
 
   return (
@@ -20,12 +24,14 @@ export default function CreateAccount() {
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <h2 className="text-center text-dark mt-5">El Doto</h2>
-      
           <div className="text-center mb-5 text-dark">TP PWA bastien AUBRY</div>
-          <div className="card auht_form"  style={{width : "60%", height: "80%", margin : "auto"}}>
+          <div
+            className="card auht_form"
+            style={{ width: "60%", height: "80%", margin: "auto" }}
+          >
             <form
               className="card-body cardbody-color p-lg-5"
-              onSubmit={handleSubmit}
+              onSubmit={(e) => handleSubmit(e)}
             >
               <div className="text-center">
                 <img
@@ -35,9 +41,8 @@ export default function CreateAccount() {
                   alt="profile"
                 />
               </div>
-
               <div className="mb-3">
-              <label>Adresse mail</label>
+                <label>Adresse mail</label>
                 <input
                   type="text"
                   id="email"
@@ -50,7 +55,7 @@ export default function CreateAccount() {
                 />
               </div>
               <div className="mb-3">
-              <label>Pseudo</label>
+                <label>Pseudo</label>
                 <input
                   type="text"
                   id="username"
@@ -63,7 +68,7 @@ export default function CreateAccount() {
                 />
               </div>
               <div className="mb-3">
-              <label>Mot de passe</label>
+                <label>Mot de passe</label>
                 <input
                   type="password"
                   id="password"
@@ -75,27 +80,31 @@ export default function CreateAccount() {
                 />
               </div>
               <div className="text-center">
-              { !loading ? <input
-                type="submit"
-                id="login"
-                value="Créer un compte"
-                className="btn-color px-5 mb-5 w-100"
-              />:
-              <div className="btn-color-loading px-5 mb-5 w-100" ><div className="loader"></div></div>}
+                {!loading ? (
+                  <input
+                    type="submit"
+                    id="login"
+                    value="Créer un compte"
+                    className="btn-color px-5 mb-5 w-100"
+                  />
+                ) : (
+                  <div className="btn-color-loading px-5 mb-5 w-100">
+                    <div className="loader"></div>
+                  </div>
+                )}
               </div>
               <div
                 id="emailHelp"
                 className="form-text text-center mb-5 text-dark"
               >
-                Already have an account?{" "}
-                <a
-                  href="/login"
-                 
-                  className="text-dark fw-bold"
+                Vous avez déja un compte ?
+                <button
+                  type="button"
+                  onClick={handleLogin}
+                  className="text-dark fw-bold create_account_btn"
                 >
-                  {" "}
-                  Login
-                </a>
+                  Connexion
+                </button>
               </div>
             </form>
           </div>
