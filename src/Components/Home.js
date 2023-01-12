@@ -21,7 +21,7 @@ export default function Home() {
       <h1>
         Liste des Projets de
         {user &&
-          <strong style={{ color: "grey" }}>{` ${user.username} `}</strong>
+          <strong style={{ color: "#2f3e46" }}>{` ${user.username} `}</strong>
          }
       </h1>
       <article style={{margin : " 10px 0 30px 0"}}> <button
@@ -34,7 +34,7 @@ export default function Home() {
       </button>
       <button
         onClick={HandleSave}
-        className="home_buttons history_active"
+        className="home_buttons save_button"
         type="submit"
         value="Save"
       >

@@ -79,7 +79,7 @@ export default function CreateAccount() {
               { !loading ? <input
                 type="submit"
                 id="login"
-                value="Login"
+                value="Créer un compte"
                 className="btn-color px-5 mb-5 w-100"
               />:
               <div className="btn-color-loading px-5 mb-5 w-100" ><div className="loader"></div></div>}

@@ -46,6 +46,7 @@ h1 {
   padding: 0;
   margin: 0;
   width: 90%;
+  color: #354f52;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -74,9 +75,13 @@ h1 {
 }
 
 h5 > form {
-  margin: auto;
+ width: 100%;
 }
-h5{
+form select{
+  margin-left: 5px;
+  margin-right: 15px; 
+}
+h5, h5 > form{
   font-weight: lighter;
   display: flex;
   align-items: center;
@@ -123,27 +128,32 @@ h5{
   border: none;
   margin: 1px;
   border-radius: 2px;
-  color: white;
+  color: #cad2c5;
 }
 .save_button {
-  background-color: #14a44d;
+  background-color: #354f52;
+  border:1px solid #354f52;
 }
 
 .history_inactive{
-  background-color: white;
-  border: 0.5px solid #535df1;
-  color: #535df1;
+
+  border: 0.5px solid #84a98c;
+  color: #84a98c;
+}
+.inactive_task{
+  background-color: #cad2c5;
+  color: #2f3e46;
 }
 
 .history_active, .history_inactive:hover {
-  color: white;
+  color: #cad2c5;
   cursor: pointer;
-  border: 0.5px solid #535df1;
-  background-color: #535df1;
+  border: 0.5px solid #84a98c;
+  background-color: #84a98c;
 }
 .logout_button {
-  background-color: #dc4c64;
-  border: 0.5px solid #dc4c64;
+  background-color: #2f3e46;
+  border: 0.5px solid #2f3e46;
 }
 
 .todo{
@@ -181,8 +191,8 @@ h5{
 }
  .btn-color:hover{
   background-color: white;
-  color: #0e1c36;
-  border: 0.5px solid #0e1c36;
+  color: #52796f;
+  border: 0.5px solid #52796f;
   }
 .btn-color-loading{
   display: flex;
@@ -192,8 +202,9 @@ h5{
 .btn-color, .btn-color-loading{
   height: 35px;
   width: 60%;
-  background-color: #0e1c36;
+  background-color: #52796f;
   color: white;
+  border: none;
 }
 
 .profile-image-pic{
@@ -216,13 +227,13 @@ a{
   width: 25px;
   margin-left: 10px ;
   color: white;
-  background-color: #535df1;
+  background-color: #52796f;
   border-radius: 3px;
 }
 #add_task:hover, .add_todo_button:hover{
-  color: #535df1; 
+  color: #52796f; 
   background-color:  white;
-  border: 0.5px solid #535df1;
+  border: 0.5px solid #52796f;
 }
 h5 div{
   width: 100%;
@@ -236,8 +247,8 @@ h5 div{
   border :none;
   cursor: pointer;
   background-color: azure;
-  color: grey;
-  border: 0.5px solid grey;
+  color: #84a98c;
+  border: 0.5px solid #84a98c;
   border-radius: 3px;
 }
 
@@ -246,16 +257,17 @@ h5 div{
   height: 30%;
   margin: 25px;
   padding: 25px;
-  border: 1px solid lightgray;
+  border: 1px solid #cad2c5;
   border-radius: 5px;
 }
 
-.form_child li, .child_history li, .child_history, .child {
+.form_child li, .child_history li, .child_history, .child, .child li {
   width: 100%;
 }
-.form_child, .child_history {
+.form_child, .child, .child_history {
   width: 100%;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
 }
 @media (max-width: 850px) {

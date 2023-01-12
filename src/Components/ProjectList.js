@@ -73,11 +73,13 @@ export default function ProjectList({ props, tags, history }) {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 ></input>
-                <input
-                  id="add_task"
-                  type="submit"
-                  value="+"
-                ></input>
+                <div>
+                  <input
+                    id="add_task"
+                    type="submit"
+                    value="+"
+                  ></input>
+                </div>
               </form>
             </h5>
           </li>

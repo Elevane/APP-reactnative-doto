@@ -39,7 +39,7 @@ export default function TodoList({ props, handleDelete }) {
     <>{props.active &&  <ul
       key={props.key}
       className="child"
-      style={closed ? { height: "35px" } : { height: "150px" }}
+      style={closed ? { height: "50px" } : { height: "150px" }}
     >
       <li>
         <h5 onClick={(e) => ShowHide(e)}>
@@ -50,7 +50,7 @@ export default function TodoList({ props, handleDelete }) {
           <div><button
               onClick={() => handleDelete(props.name)}
               className="btn_del_project"
-            >
+              tool            >
             v
             </button></div>
             
@@ -65,7 +65,7 @@ export default function TodoList({ props, handleDelete }) {
           }
         >
           {childs.filter(x => x.active).map((elm, index) => (
-            <li key={index} onClick={() => updateTodo(elm.desc, !elm.active)} className="todo" style={ !elm.active ? {backgroundColor: "#DCDCDC"} : {backgroundColor: "white"}} >{elm.desc} </li>
+            <li key={index} onClick={() => updateTodo(elm.desc, !elm.active)} className={ elm.active ? "todo" : "todo inactive_task"} >{elm.desc} </li>
           ))}
           <li style={{marginBottom : "5px"}}>
             <form onSubmit={(e) => HandleSubmit(e)}>
@@ -82,7 +82,7 @@ export default function TodoList({ props, handleDelete }) {
             </form>
           </li>
           {childs.filter(x => !x.active).map((elm, index) => (
-            <li key={index} onClick={() => updateTodo(elm.desc, !elm.active)} className="todo" style={ !elm.active ? {backgroundColor: "#DCDCDC"} : {backgroundColor: "white"}} >{elm.desc} </li>
+            <li key={index} onClick={() => updateTodo(elm.desc, !elm.active)} className={ elm.active ? "todo" : "todo inactive_task"} >{elm.desc} </li>
           ))}
         </ul>
       </li>
