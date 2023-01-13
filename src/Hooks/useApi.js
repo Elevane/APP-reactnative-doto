@@ -1,17 +1,38 @@
 import useLocalStorage from "./useLocalStorage";
 
+const processResult = (value) => {
+  if (
+    value !== null &&
+    value !== undefined &&
+    value.result !== null &&
+    value.result !== undefined
+  ) {
+    localStorage.setItem(
+      process.env.REACT_APP_USER_KEY_LOCAL,
+      JSON.stringify({ user: value.result })
+    );
+    return { isSucess: true, error: null };
+  } else if (value.errorMessage !== undefined)
+    return { isSucess: false, error: value.errorMessage };
+  else {
+    return { isSucess: false, error: "unknwown error while fetching api" };
+  }
+};
+
 const updateUser = async () => {
   const user = useLocalStorage.GetUser();
   if (!user) {
     alert("No user is Authentificated");
     return;
   }
-  await request(
+  return await request(
     process.env.REACT_APP_DBHOST_TODO,
     "PUT",
     user.token,
     user.todo
-  );
+  ).then((value) => {
+    return processResult(value);
+  });
 };
 
 const authenticate = (email, password) => {
@@ -25,21 +46,7 @@ const authenticate = (email, password) => {
     null,
     user
   ).then((value) => {
-    if (
-      value !== null &&
-      value !== undefined &&
-      value.result !== null &&
-      value.result !== undefined
-    ) {
-      localStorage.setItem(
-        process.env.REACT_APP_USER_KEY_LOCAL,
-        JSON.stringify({ user: value.result })
-      );
-      window.location.href = "/";
-    } else if (value.errorMessage !== undefined)
-      alert(
-        `Error while fetching : server response  =>  ${value.errorMessage}`
-      );
+    return processResult(value);
   });
 };
 
@@ -56,21 +63,7 @@ const createAccount = async (email, password, username) => {
     localUser.token,
     user
   ).then((value) => {
-    if (
-      value !== null &&
-      value !== undefined &&
-      value.result !== null &&
-      value.result !== undefined
-    ) {
-      localStorage.setItem(
-        process.env.REACT_APP_USER_KEY_LOCAL,
-        JSON.stringify({ user: value.result })
-      );
-      window.location.href = "/";
-    } else if (value.errorMessage !== undefined)
-      alert(
-        `Error while fetching : server response  =>  ${value.errorMessage}`
-      );
+    return processResult(value);
   });
 };
 
@@ -87,9 +80,10 @@ const request = async (route, method, token = null, requestbody = null) => {
   })
     .then((data) => data.json())
     .catch(function (e, a, b) {
-      alert(
+      console.log(
         `Error while fetching the api, error given : ${e}  || ${a} || ${b}`
       );
+      return { isSucess: false, error: `${e}  || ${a} || ${b}` };
     });
 };
 

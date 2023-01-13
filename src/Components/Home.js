@@ -4,6 +4,7 @@ import useLocalStorage from "../Hooks/useLocalStorage";
 import useApi from "../Hooks/useApi";
 import useLocalJson from "../Hooks/useLocalJson";
 import routes from "../Hooks/useRoutes";
+import { toast } from "react-hot-toast";
 
 export default function Home() {
   const user = useLocalStorage.GetUser();
@@ -13,8 +14,10 @@ export default function Home() {
     routes.logout();
   };
 
-  const HandleSave = () => {
-    useApi.updateUser();
+  const HandleSave = async () => {
+    let res = await useApi.updateUser();
+    if (res.error) return toast.error(res.error);
+    return toast.success("Projets sauvegardés");
   };
 
   return (
@@ -35,25 +38,25 @@ export default function Home() {
               : "home_buttons history_inactive"
           }
           type="submit"
-          value="history"
+          value="historique"
         >
-          History
+          historique
         </button>
         <button
           onClick={HandleSave}
           className="home_buttons save_button"
           type="submit"
-          value="Save"
+          value="Sauvegarder"
         >
-          Save
+          Sauvegarder
         </button>
         <button
           onClick={handleLogout}
           className="home_buttons history_active logout_button"
           type="submit"
-          value="Logout"
+          value="Déconnexion"
         >
-          Logout
+          Déconnexion
         </button>
       </article>
       <ListProjects

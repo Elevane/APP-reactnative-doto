@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 import useApi from "../../Hooks/useApi";
 import routes from "../../Hooks/useRoutes";
+import { Routes } from "../../Utils/Routes";
 
 export default function CreateAccount() {
   const [email, setEmail] = useState();
@@ -11,12 +13,14 @@ export default function CreateAccount() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await useApi.createAccount(email, password, username);
+    let res = await useApi.createAccount(email, password, username);
     setLoading(false);
+    if (!res.isSucess) return toast.error(res.error);
+    return routes.moveTo(Routes.HOME);
   };
 
   const handleLogin = () => {
-    routes.moveTo("login");
+    routes.moveTo(Routes.LOGIN);
   };
 
   return (
