@@ -3,6 +3,7 @@ import useLocalStorage from "../Hooks/useLocalStorage";
 import TodoSubmit from "./Todo/TodoSubmit";
 import Todo from "./Todo/Todo";
 import ProjetHeader from "./Project/ProjectHeader";
+import { toast } from "react-hot-toast";
 
 export default function ListTodos({ props, handleDelete }) {
   const [closed, setClosed] = useState(true);
@@ -15,8 +16,15 @@ export default function ListTodos({ props, handleDelete }) {
 
   const HandleSubmit = () => {
     setIsAdding(true);
-    if (childs.some((p) => p.desc === newItem) || !newItem) {
-      alert("A child with same name already exist Or Value is wrong format");
+    if (
+      childs.some(
+        (p) => p.desc.toLowerCase() === newItem.toLocaleLowerCase()
+      ) ||
+      !newItem
+    ) {
+      toast.error(
+        "A child with same name already exist or Value is wrong format"
+      );
       return;
     }
     useLocalStorage.AddTodo(props.name, newItem);

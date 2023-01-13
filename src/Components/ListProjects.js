@@ -4,6 +4,7 @@ import useLocalJson from "../Hooks/useLocalJson";
 import useLocalStorage from "../Hooks/useLocalStorage";
 import HistoryProject from "./Project/HistoryProject";
 import { MdAddCircleOutline } from "react-icons/md";
+import { toast } from "react-hot-toast";
 
 export default function ListProjects({ props, tags, history }) {
   const [closed, setClosed] = useState(false);
@@ -12,8 +13,12 @@ export default function ListProjects({ props, tags, history }) {
   const [name, setName] = useState("");
 
   const HandleSubmit = (e) => {
-    if (data.some((p) => p.name === name && p.tag === tag)) {
-      alert("A porject with same name already exist");
+    if (
+      data.some(
+        (p) => p.name.toLowerCase() === name.toLowerCase() && p.tag === tag
+      )
+    ) {
+      toast.error("A project with same name already exist");
       return;
     }
     const newItem = {
