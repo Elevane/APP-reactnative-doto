@@ -15,15 +15,17 @@ const processResult = (value) => {
   } else if (value.errorMessage !== undefined)
     return { isSucess: false, error: value.errorMessage };
   else {
-    return { isSucess: false, error: "unknwown error while fetching api" };
+    return { isSucess: false, error: "Erreur inconnue lors de l'appel api." };
   }
 };
 
-const updateUser = async () => {
+const updateUserProjects = async () => {
   const user = useLocalStorage.GetUser();
   if (!user) {
-    alert("No user is Authentificated");
-    return;
+    return {
+      isSucess: false,
+      error: "Impossible de trouver l'utilisateur dans les fichiers locaux.",
+    };
   }
   return await request(
     process.env.REACT_APP_DBHOST_TODO,
@@ -81,10 +83,10 @@ const request = async (route, method, token = null, requestbody = null) => {
     .then((data) => data.json())
     .catch(function (e, a, b) {
       console.log(
-        `Error while fetching the api, error given : ${e}  || ${a} || ${b}`
+        `Erreur lors de l'appel api avec comme erreur : ${e}  || ${a} || ${b}`
       );
       return { isSucess: false, error: `${e}  || ${a} || ${b}` };
     });
 };
 
-export default { updateUser, createAccount, authenticate };
+export default { updateUserProjects, createAccount, authenticate };

@@ -18,7 +18,12 @@ export default function ListProjects({ props, tags, history }) {
         (p) => p.name.toLowerCase() === name.toLowerCase() && p.tag === tag
       )
     ) {
-      toast.error("A project with same name already exist");
+      toast.error(
+        <p>
+          Un <span style={{ color: "red" }}>project</span> avec le même nom
+          existe déjà ou la valeur données est fausse
+        </p>
+      );
       return;
     }
     const newItem = {

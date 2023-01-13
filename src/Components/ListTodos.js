@@ -23,7 +23,10 @@ export default function ListTodos({ props, handleDelete }) {
       !newItem
     ) {
       toast.error(
-        "A child with same name already exist or Value is wrong format"
+        <p>
+          Une <span style={{ color: "red" }}>tâche</span> avec le même nom
+          existe déjà ou la valeur données est fausse
+        </p>
       );
       return;
     }

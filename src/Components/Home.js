@@ -15,7 +15,7 @@ export default function Home() {
   };
 
   const HandleSave = async () => {
-    let res = await useApi.updateUser();
+    let res = await useApi.updateUserProjects();
     if (res.error) return toast.error(res.error);
     return toast.success("Projets sauvegardés");
   };
