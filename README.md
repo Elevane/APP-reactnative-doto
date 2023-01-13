@@ -1,3 +1,5 @@
+
+discord : Chewye#2432
 # doto
 1.	Dans le répertoire racine cloné créer un fichier «.env» s’il n’existe pas et y ajouter les valeurs suivantes :
   -	REACT_APP_DBHOST_USERS=**adresseapi:port**/api/Auth
